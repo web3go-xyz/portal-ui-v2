@@ -18,6 +18,14 @@ body {
     background: #ededed;
 }
 
+.hover-item {
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
 #app {
 
     // el-table样式修改
@@ -113,6 +121,16 @@ body {
     .el-table__expand-column {
         .cell {
             padding: 0 0 0 12px;
+        }
+    }
+
+    .el-table .table-option-icon {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .8;
         }
     }
 }

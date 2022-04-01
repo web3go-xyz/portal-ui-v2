@@ -39,7 +39,17 @@
         <template #header>
           <div class="flex-center">
             <span class="text">Action</span>
-            <img src="@/assets/images/moonbeam/Frame_67.png" alt="" />
+            <a-popover title="Title" trigger="click">
+              <img
+                class="table-option-icon"
+                src="@/assets/images/moonbeam/Frame_67.png"
+                alt=""
+              />
+              <template #content>
+                <p>Here is the text content</p>
+                <p>Here is the text content</p>
+              </template>
+            </a-popover>
           </div>
         </template>
       </el-table-column>
