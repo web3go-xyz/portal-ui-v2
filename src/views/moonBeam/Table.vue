@@ -1,14 +1,6 @@
 <template>
   <div class="table-wrap">
-    <el-table :data="tableData">
-      <el-table-column prop="date" label="Collator"> </el-table-column>
-      <el-table-column prop="date" label="APR"> </el-table-column>
-      <el-table-column prop="date" label="Min Bond"> </el-table-column>
-      <el-table-column prop="date" label="Total Stake"> </el-table-column>
-      <el-table-column prop="date" label="Avg Blocks"> </el-table-column>
-      <el-table-column prop="name" label="Total Reward"> </el-table-column>
-      <el-table-column prop="address" label="Action"> </el-table-column>
-    </el-table>
+    <a-table :columns="columns" :data="data" />
   </div>
 </template>
 
@@ -16,41 +8,59 @@
 export default {
   data() {
     return {
-      tableData: [
+      columns: [
         {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          title: "Name",
+          dataIndex: "name",
         },
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          title: "Salary",
+          dataIndex: "salary",
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          title: "Address",
+          dataIndex: "address",
         },
         {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          title: "Email",
+          dataIndex: "email",
+        },
+      ],
+      data: [
+        {
+          key: "1",
+          name: "Jane Doe",
+          salary: 23000,
+          address: "32 Park Road, London",
+          email: "jane.doe@example.com",
         },
         {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          key: "2",
+          name: "Alisa Ross",
+          salary: 25000,
+          address: "35 Park Road, London",
+          email: "alisa.ross@example.com",
         },
         {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          key: "3",
+          name: "Kevin Sandra",
+          salary: 22000,
+          address: "31 Park Road, London",
+          email: "kevin.sandra@example.com",
         },
         {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          key: "4",
+          name: "Ed Hellen",
+          salary: 17000,
+          address: "42 Park Road, London",
+          email: "ed.hellen@example.com",
+        },
+        {
+          key: "5",
+          name: "William Smith",
+          salary: 27000,
+          address: "62 Park Road, London",
+          email: "william.smith@example.com",
         },
       ],
     };

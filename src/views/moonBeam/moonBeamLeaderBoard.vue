@@ -3,7 +3,7 @@
     <div class="big-title">Moonbeam Staking Leaderboard</div>
     <div class="info-wrap">
       <div class="item">
-        <img class="left-icon" src="@/assets/images/total rewards.png" alt="" />
+        <img class="left-icon" src="@/assets/images/total_rewards.png" alt="" />
         <div class="right">
           <div class="head">
             <span> Total Collators </span>
@@ -11,7 +11,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <img
                   class="icon"
-                  src="@/assets/images/Group 47.png"
+                  src="@/assets/images/Group_47.png"
                   v-bind="attrs"
                   v-on="on"
                   alt=""
@@ -32,7 +32,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <img
                   class="icon"
-                  src="@/assets/images/Group 47.png"
+                  src="@/assets/images/Group_47.png"
                   v-bind="attrs"
                   v-on="on"
                   alt=""
@@ -53,7 +53,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <img
                   class="icon"
-                  src="@/assets/images/Group 47.png"
+                  src="@/assets/images/Group_47.png"
                   v-bind="attrs"
                   v-on="on"
                   alt=""
@@ -74,7 +74,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <img
                   class="icon"
-                  src="@/assets/images/Group 47.png"
+                  src="@/assets/images/Group_47.png"
                   v-bind="attrs"
                   v-on="on"
                   alt=""

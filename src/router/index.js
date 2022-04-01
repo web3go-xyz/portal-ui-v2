@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [{
     path: '/',
@@ -17,7 +14,8 @@ const routes = [{
     }],
 }, ]
 
-const router = new VueRouter({
+const router = createRouter({
+    history: createWebHashHistory(),
     routes
 })
 

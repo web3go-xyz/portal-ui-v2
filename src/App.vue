@@ -1,17 +1,17 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view />
-    </v-main>
-  </v-app>
+  <a-config-provider :locale="enUS">
+    <router-view />
+  </a-config-provider>
 </template>
-
 <script>
+import enUS from "@arco-design/web-vue/es/locale/lang/en-us";
 export default {
-  name: "App",
-
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      enUS,
+    };
+  },
 };
 </script>
+<style lang="less">
+</style>
