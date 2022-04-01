@@ -3,85 +3,49 @@
     <div class="big-title">Moonbeam Staking Leaderboard</div>
     <div class="info-wrap">
       <div class="item">
-        <img class="left-icon" src="@/assets/images/total_rewards.png" alt="" />
+        <img class="left-icon" src="@/assets/images/moonbeam/total_rewards.png" alt="" />
         <div class="right">
           <div class="head">
             <span> Total Collators </span>
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <img
-                  class="icon"
-                  src="@/assets/images/Group_47.png"
-                  v-bind="attrs"
-                  v-on="on"
-                  alt=""
-                />
-              </template>
-              <span>Tooltip</span>
-            </v-tooltip>
+            <a-tooltip content="This is tooltip content">
+              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+            </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
         </div>
       </div>
       <div class="item">
-        <img class="left-icon" src="@/assets/images/Icon.png" alt="" />
+        <img class="left-icon" src="@/assets/images/moonbeam/Icon.png" alt="" />
         <div class="right">
           <div class="head">
             <span> Total Staking Amount </span>
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <img
-                  class="icon"
-                  src="@/assets/images/Group_47.png"
-                  v-bind="attrs"
-                  v-on="on"
-                  alt=""
-                />
-              </template>
-              <span>Tooltip</span>
-            </v-tooltip>
+            <a-tooltip content="This is tooltip content">
+              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+            </a-tooltip>
           </div>
           <div class="value"><span class="color">300</span>/1800</div>
         </div>
       </div>
       <div class="item">
-        <img class="left-icon" src="@/assets/images/Icon-1.png" alt="" />
+        <img class="left-icon" src="@/assets/images/moonbeam/Icon-1.png" alt="" />
         <div class="right">
           <div class="head">
             <span> Total Blocks </span>
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <img
-                  class="icon"
-                  src="@/assets/images/Group_47.png"
-                  v-bind="attrs"
-                  v-on="on"
-                  alt=""
-                />
-              </template>
-              <span>Tooltip</span>
-            </v-tooltip>
+            <a-tooltip content="This is tooltip content">
+              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+            </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
         </div>
       </div>
       <div class="item">
-        <img class="left-icon" src="@/assets/images/Icon-2.png" alt="" />
+        <img class="left-icon" src="@/assets/images/moonbeam/Icon-2.png" alt="" />
         <div class="right">
           <div class="head">
             <span> Total Rewards </span>
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <img
-                  class="icon"
-                  src="@/assets/images/Group_47.png"
-                  v-bind="attrs"
-                  v-on="on"
-                  alt=""
-                />
-              </template>
-              <span>Tooltip</span>
-            </v-tooltip>
+            <a-tooltip content="This is tooltip content">
+              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+            </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
         </div>
@@ -123,7 +87,7 @@
           >
             <div class="r-left">
               <div class="num" :class="'num' + (i + 1)">{{ i + 1 }}st</div>
-              <img class="icon" src="@/assets/images/Icon.png" alt="" />
+              <img class="icon" src="@/assets/images/moonbeam/Icon.png" alt="" />
               <div class="middle">
                 <div class="mt">artnft-13</div>
                 <div class="mb">Safe</div>
@@ -142,7 +106,7 @@
           >
             <div class="r-left">
               <div class="num" :class="'num' + (i + 1)">{{ i + 1 }}st</div>
-              <img class="icon" src="@/assets/images/Icon.png" alt="" />
+              <img class="icon" src="@/assets/images/moonbeam/Icon.png" alt="" />
               <div class="middle">
                 <div class="mt">artnft-13</div>
                 <div class="mb">Safe</div>
@@ -152,7 +116,7 @@
           </div>
         </div>
       </div>
-    <Table/>
+      <Table />
     </div>
   </div>
 </template>
@@ -171,16 +135,17 @@ export default {
 
 <style lang="less" scoped>
 .moobeam-leaderboard-page {
+  padding: 24px 20px 37px 20px;
   .big-title {
-    padding: 40px 31px;
+    padding: 40px 11px;
     font-size: 34px;
     color: #2b3674;
     font-weight: 700;
   }
   .info-wrap {
-    padding: 0 20px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 24px;
     .item {
       display: flex;
       align-items: center;
@@ -207,8 +172,8 @@ export default {
 
           .icon {
             margin-left: 4px;
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
           }
         }
         .value {
@@ -223,7 +188,6 @@ export default {
     }
   }
   .main {
-    margin: 24px 20px 37px 20px;
     background: #ffffff;
     border-radius: 20px;
     padding: 24px 28px;

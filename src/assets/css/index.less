@@ -1,5 +1,118 @@
 html,
 body {
     font-family: "DM Sans", "Avenir", Helvetica, Arial, sans-serif;
-    margin:0;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(38, 38, 38, 0.2);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #ededed;
+}
+
+#app {
+
+    // el-table样式修改
+    .el-table {
+        background: transparent;
+    }
+
+    .el-table .el-table__cell {
+        padding: 13px 0;
+    }
+
+    .el-table__header-wrapper tr th {
+        background: #F4F7FE;
+        font-size: 14px;
+        color: #8F9BBA;
+        font-weight: 500;
+
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    }
+
+    .el-table__header-wrapper tr {
+        // height: 50px;
+        // line-height: 50px;
+        border-radius: 10px;
+    }
+
+    .el-table td.el-table__cell,
+    .el-table th.el-table__cell.is-leaf {
+        border: 0;
+    }
+
+    .el-table--border .el-table__inner-wrapper::after,
+    .el-table--border::after,
+    .el-table--border::before,
+    .el-table__inner-wrapper::before {
+        display: none;
+    }
+
+    .el-table__body tr.hover-row.current-row>td.el-table__cell,
+    .el-table__body tr.hover-row.el-table__row--striped.current-row>td.el-table__cell,
+    .el-table__body tr.hover-row.el-table__row--striped>td.el-table__cell,
+    .el-table__body tr.hover-row>td.el-table__cell {
+        background: #F3F0FF;
+    }
+
+    .el-table__body tr.hover-row {
+        border-radius: 10px;
+
+        td {
+
+            &:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+    }
+
+    .el-table__body td {
+        font-size: 14px;
+        color: #2B3674;
+    }
+
+    .el-table__expand-icon {
+        .el-icon {
+            svg {
+                display: none;
+            }
+
+            &::after {
+                display: block;
+                content: '';
+                background: url(~@/assets/images/moonbeam/Vector.png);
+                width: 6px;
+                height: 10px;
+            }
+        }
+
+    }
+
+    .el-table__expand-column {
+        .cell {
+            padding: 0 0 0 12px;
+        }
+    }
 }

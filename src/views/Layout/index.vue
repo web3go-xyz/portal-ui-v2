@@ -2,22 +2,23 @@
   <div class="container">
     <div class="container-side">
       <div class="header">
-        <img class="icon" src="@/assets/images/Group.png" alt="" />
-        <img class="text" src="@/assets/images/Group-1.png" alt="" />
+        <img class="icon" src="@/assets/images/moonbeam/Group.png" alt="" />
+        <img class="text" src="@/assets/images/moonbeam/Group-1.png" alt="" />
       </div>
       <div class="menu-wrap">
-        <div class="menu-item">
+        <div v-for="(v, i) in menu" :key="i" class="menu-item">
           <div class="menu-title">
-            <img class="icon" src="@/assets/images/moonbeam.png" alt="" />
+            <img class="icon" :src="v.icon" alt="" />
             <span> Moonbeam </span>
           </div>
-          <div class="sub-menu-item active">Leadeerboard</div>
-          <div class="sub-menu-item">My stake</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-title">
-            <img class="icon" src="@/assets/images/moonriver.png" alt="" />
-            <span> Moonriver </span>
+          <div
+            v-for="(sv, si) in v.children"
+            :key="si"
+            class="sub-menu-item"
+            :class="{ active: sv.name == currentSubMenu.name }"
+            @click="changeMenu(sv)"
+          >
+            {{ sv.name }}
           </div>
         </div>
       </div>
@@ -32,7 +33,36 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      currentSubMenu: {},
+      menu: [
+        {
+          icon: require("@/assets/images/moonbeam/moonbeam.png"),
+          name: "Moonbeam",
+          children: [
+            {
+              name: "Leadeerboard",
+            },
+            {
+              name: "My stake",
+            },
+          ],
+        },
+        {
+          icon: require("@/assets/images/moonbeam/moonriver.png"),
+          name: "Moonriver",
+        },
+      ],
+    };
+  },
+  methods: {
+    changeMenu(sv) {
+      this.currentSubMenu = sv;
+    },
+  },
+};
 </script>
 <style lang="less" scoped>
 .container {
@@ -83,6 +113,14 @@ export default {};
           /* Secondary/Grey/600 */
 
           color: #a3aed0;
+          &:hover {
+            cursor: pointer;
+            background: linear-gradient(
+              89.97deg,
+              #f6f8fd 0.02%,
+              rgba(233, 237, 247, 0) 99.97%
+            );
+          }
           &.active {
             border-left: 3px solid #5d5fef;
             background: linear-gradient(

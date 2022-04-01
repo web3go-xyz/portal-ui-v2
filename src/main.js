@@ -7,4 +7,12 @@ import '@arco-design/web-vue/dist/arco.css';
 import '@/assets/font/font.css';
 import '@/assets/css/index.less';
 
-createApp(App).use(store).use(router).use(ArcoVue).mount('#app')
+import 'element-plus/es/components/table/style/css'
+import 'element-plus/es/components/table-column/style/css'
+
+import { ElTable, ElTableColumn } from 'element-plus'
+const app = createApp(App);
+app.component(ElTable.name, ElTable);
+app.component(ElTableColumn.name, ElTableColumn);
+
+app.use(store).use(router).use(ArcoVue).mount('#app')
