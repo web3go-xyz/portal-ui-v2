@@ -177,6 +177,7 @@ export default {
           }
         }
         .value {
+          margin-top: 5px;
           font-weight: 700;
           color: #1b2559;
           font-size: 24px;

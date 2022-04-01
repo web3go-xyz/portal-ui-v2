@@ -2,11 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import '@arco-design/web-vue/es/index.less';
 import ArcoVue from '@arco-design/web-vue';
-import '@arco-design/web-vue/dist/arco.css';
+
 import '@/assets/font/font.css';
 import '@/assets/css/index.less';
-
 import 'element-plus/es/components/table/style/css'
 import 'element-plus/es/components/table-column/style/css'
 
