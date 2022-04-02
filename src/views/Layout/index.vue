@@ -15,7 +15,7 @@
             v-for="(sv, si) in v.children"
             :key="si"
             class="sub-menu-item"
-            :class="{ active: sv.name == currentSubMenu.name }"
+            :class="{ active: sv.routeName == $route.name }"
             @click="changeMenu(sv)"
           >
             {{ sv.name }}
@@ -36,7 +36,6 @@
 export default {
   data() {
     return {
-      currentSubMenu: {},
       menu: [
         {
           icon: require("@/assets/images/moonbeam/moonbeam.png"),
@@ -44,9 +43,11 @@ export default {
           children: [
             {
               name: "Leadeerboard",
+              routeName: "moonBeamLeaderBoard",
             },
             {
               name: "My stake",
+              routeName: "moonBeamMyStake",
             },
           ],
         },
@@ -59,7 +60,9 @@ export default {
   },
   methods: {
     changeMenu(sv) {
-      this.currentSubMenu = sv;
+      this.$router.push({
+        name: sv.routeName,
+      });
     },
   },
 };

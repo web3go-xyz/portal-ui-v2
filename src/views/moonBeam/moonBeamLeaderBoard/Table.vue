@@ -190,7 +190,44 @@
             <div class="icon"></div>
             <span>Stake</span>
           </div>
-          <div class="input"></div> 
+          <div class="input-wrap">
+            <a-input-number
+              hide-button
+              class="input"
+              v-model="inputValue"
+              :min="0"
+            />
+          </div>
+          <div class="slider-wrap">
+            <a-slider
+              class="slider"
+              :marks="marks"
+            />
+          </div>
+          <div class="head">
+            <div class="icon"></div>
+            <span>Reward next round </span>
+          </div>
+          <div class="range">
+            <div class="left">
+              <div class="top">
+                <span class="num">0.0222222 </span>
+                <span class="unit">GLMR</span>
+              </div>
+              <div class="bottom">Min Estimate Reward</div>
+            </div>
+            <div class="split">~</div>
+            <div class="right">
+              <div class="top">
+                <span class="num">0.0222222 </span>
+                <span class="unit">GLMR</span>
+              </div>
+              <div class="bottom">Max Estimate Reward</div>
+            </div>
+          </div>
+          <div class="btn-wrap">
+            <a-button class="btn" type="primary">Go to stake</a-button>
+          </div>
         </div>
       </div>
     </a-drawer>
@@ -220,6 +257,13 @@ export default {
       { name: "RPM Volatility Score", prop: "state", width: "160" },
     ];
     return {
+      marks: {
+        0: "Rank 300",
+        33: "Rank 270",
+        66: "Rank 150",
+        100: "Rank 1",
+      },
+      inputValue: 0,
       drawerVisible: false,
       popoverShow: false,
       currentRow: {},
@@ -635,6 +679,90 @@ export default {
         font-weight: 700;
         font-size: 24px;
         color: #2b3674;
+      }
+    }
+    .input-wrap {
+      margin-top: 16px;
+      /deep/ .arco-input {
+        color: #1b2559;
+        font-weight: 700;
+        font-size: 34px;
+      }
+      .input {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+        height: 100px;
+        background: #f4f7fe;
+        border-radius: 10px;
+      }
+      /deep/ .arco-input-focus {
+        background: white;
+      }
+    }
+    .slider-wrap {
+      padding: 0 30px;
+      margin-top: 60px;
+      /deep/ .arco-slider-with-marks {
+        padding: 0;
+      }
+      .slider {
+        width: 100%;
+      }
+    }
+    .range {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 42px;
+      color: #2200b7;
+      .left {
+        text-align: left;
+        .top {
+          display: flex;
+          align-items: center;
+          .unit {
+            margin-left: 7px;
+            margin-top: 21px;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+        .bottom {
+          font-weight: 500;
+          font-size: 14px;
+          color: #8f9bba;
+        }
+      }
+      .split {
+      }
+      .right {
+        text-align: right;
+        .top {
+          display: flex;
+          align-items: center;
+          .unit {
+            margin-left: 7px;
+            margin-top: 21px;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+        .bottom {
+          text-align: left;
+          font-weight: 500;
+          font-size: 14px;
+          color: #8f9bba;
+        }
+      }
+    }
+    .btn-wrap {
+      margin-top: 80px;
+      text-align: center;
+      .btn {
+        width: 375px;
+        height: 46px;
       }
     }
   }

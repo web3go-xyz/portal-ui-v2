@@ -5,14 +5,19 @@ const routes = [{
     name: 'Layout',
     redirect: 'moonBeamLeaderBoard',
     component: () =>
-        import ('@/views/Layout'),
+        import('@/views/Layout'),
     children: [{
         path: 'moonBeamLeaderBoard',
         name: 'moonBeamLeaderBoard',
         component: () =>
-            import ('@/views/moonBeam/moonBeamLeaderBoard')
+            import('@/views/moonBeam/moonBeamLeaderBoard')
+    }, {
+        path: 'moonBeamMyStake',
+        name: 'moonBeamMyStake',
+        component: () =>
+            import('@/views/moonBeam/moonBeamMyStake')
     }],
-}, ]
+},]
 
 const router = createRouter({
     history: createWebHashHistory(),
