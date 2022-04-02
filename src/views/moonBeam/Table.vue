@@ -1,12 +1,57 @@
 <template>
   <div class="table-wrap">
-    <el-table :data="tableData">
+    <el-table :data="tableData" ref="table" @expand-change="expandChange">
       <el-table-column type="expand" fixed width="24">
         <template #default="props">
-          <p>State: {{ props.row.state }}</p>
-          <p>City: {{ props.row.city }}</p>
-          <p>Address: {{ props.row.address }}</p>
-          <p>Zip: {{ props.row.zip }}</p>
+          <!-- <p>State: {{ props.row.state }}</p> -->
+          <div class="expand-content">
+            <div class="chart-wrap">
+              <div class="title">
+                <div class="icon"></div>
+                <span class="text">Rewards (last 10 rounds)</span>
+              </div>
+              <v-chart class="chart" :option="option" />
+            </div>
+            <div class="rank-wrap">
+              <div class="title">
+                <div class="icon"></div>
+                <span class="text">Top 3 Stake percent delegator</span>
+              </div>
+              <div class="rank">
+                <div class="account-wrap">
+                  <div class="account-item">
+                    <div class="img-wrap">
+                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
+                    </div>
+                    <div class="account">0xF97…aceC</div>
+                    <div class="percent">59%</div>
+                  </div>
+                  <div class="account-item">
+                    <div class="img-wrap">
+                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
+                    </div>
+                    <div class="account">0xF97…aceC</div>
+                    <div class="percent">59%</div>
+                  </div>
+                  <div class="account-item">
+                    <div class="img-wrap">
+                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
+                    </div>
+                    <div class="account">0xF97…aceC</div>
+                    <div class="percent">59%</div>
+                  </div>
+                </div>
+                <img
+                  class="rank-bg"
+                  src="@/assets/images/moonbeam/rank.png"
+                  alt=""
+                />
+                <span class="absolute1">1</span>
+                <span class="absolute2">2</span>
+                <span class="absolute3">3</span>
+              </div>
+            </div>
+          </div>
         </template>
       </el-table-column>
       <el-table-column prop="date" label="Collator" fixed width="200">
@@ -201,9 +246,53 @@ export default {
       checkboxList: draggableList.map((v) => v.name),
       columns: JSON.parse(JSON.stringify(draggableList)),
       selectColumns: JSON.parse(JSON.stringify(draggableList)),
+      option: {
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        grid: {
+          left: 0,
+          top: 5,
+          right: 20,
+          bottom: 0,
+        },
+        yAxis: {
+          type: "value",
+          show: false,
+        },
+        tooltip: {
+        },
+        series: [
+          {
+            itemStyle: {
+              color: "#9374FF",
+              borderRadius: 4,
+            },
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: "bar",
+          },
+          {
+            itemStyle: {
+              color: "#FF844B",
+            },
+            lineStyle: {
+              color: "#FF844B",
+              width: 3,
+            },
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: "line",
+          },
+        ],
+      },
     };
   },
   methods: {
+    expandChange(row, expandRows) {
+      if (expandRows.length) {
+        this.$refs.table.setScrollLeft(0);
+      }
+    },
     getIndex(index) {
       if (index < 10) {
         return "0" + index;
@@ -302,6 +391,113 @@ export default {
   .btn-wrap {
     text-align: center;
     margin-top: 18px;
+  }
+}
+.expand-content {
+  padding: 12px 31px;
+  background: #f4f7fe;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  position: sticky;
+  width: calc(100vw - 395px);
+  display: flex;
+
+  .title {
+    display: flex;
+    align-items: center;
+    .icon {
+      margin-right: 4px;
+      width: 3px;
+      height: 10px;
+      background: #7551ff;
+      border-radius: 2px;
+    }
+    .text {
+      font-size: 14px;
+      color: #a3aed0;
+    }
+  }
+  .chart-wrap {
+    flex: 4;
+    .chart {
+      padding-top: 31px;
+      height: 110px;
+    }
+  }
+  .rank-wrap {
+    flex: 3;
+    .rank {
+      margin-left: 20px;
+      position: relative;
+      .account-wrap {
+        display: flex;
+        width: 271px;
+        margin-bottom: -15px;
+        margin-top: 35px;
+        .account-item {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &:nth-child(1) {
+            margin-top: -7px;
+          }
+          &:nth-child(2) {
+            margin-top: -20px;
+          }
+          .img-wrap {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+          }
+          .account {
+            font-size: 12px;
+            color: #707eae;
+          }
+          .percent {
+            margin-top: 3px;
+            width: 53px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            background: #e9e3ff;
+            border-radius: 20px;
+            color: #9374ff;
+            font-size: 14px;
+          }
+        }
+      }
+      .rank-bg {
+      }
+      .absolute1 {
+        position: absolute;
+        bottom: 7px;
+        left: 130px;
+        font-size: 34px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      .absolute2 {
+        position: absolute;
+        bottom: 5px;
+        left: 40px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      .absolute3 {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #ffffff;
+        bottom: 2px;
+        left: 221px;
+      }
+    }
   }
 }
 </style>
