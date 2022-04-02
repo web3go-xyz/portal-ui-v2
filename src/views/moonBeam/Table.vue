@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrap">
-    <el-table :data="tableData" ref="table" @expand-change="expandChange">
+    <el-table :data="tableData">
       <el-table-column type="expand" fixed width="24">
         <template #default="props">
           <!-- <p>State: {{ props.row.state }}</p> -->
@@ -145,10 +145,55 @@
           </div>
         </template>
         <template #default="scope">
-          <span class="common-table-option">simulate</span>
+          <span class="common-table-option" @click="openDrawer(scope.row)"
+            >simulate</span
+          >
         </template>
       </el-table-column>
     </el-table>
+    <a-drawer
+      :width="720"
+      :closable="false"
+      :footer="false"
+      :visible="drawerVisible"
+      @cancel="drawerVisible = false"
+      unmountOnClose
+    >
+      <div class="drawer-content">
+        <div class="drawer-title">
+          <span class="title">Simulate</span>
+          <img
+            class="hover-item"
+            @click="drawerVisible = false"
+            src="@/assets/images/moonbeam/Vector1.png"
+            alt=""
+          />
+        </div>
+        <div class="drawer-main">
+          <div class="info-wrap">
+            <div class="collector">
+              <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
+              <div class="right">
+                <div class="title">Collator</div>
+                <div class="value">Jetblue-125</div>
+              </div>
+            </div>
+            <div class="rank">
+              <div class="title">Collator Rank</div>
+              <div class="value">1790</div>
+            </div>
+            <div class="state">
+              <div class="tag">Safe</div>
+            </div>
+          </div>
+          <div class="head">
+            <div class="icon"></div>
+            <span>Stake</span>
+          </div>
+          <div class="input"></div> 
+        </div>
+      </div>
+    </a-drawer>
   </div>
 </template>
 
@@ -175,7 +220,9 @@ export default {
       { name: "RPM Volatility Score", prop: "state", width: "160" },
     ];
     return {
+      drawerVisible: false,
       popoverShow: false,
+      currentRow: {},
       tableData: [
         {
           date: "2016-05-03",
@@ -261,8 +308,7 @@ export default {
           type: "value",
           show: false,
         },
-        tooltip: {
-        },
+        tooltip: {},
         series: [
           {
             itemStyle: {
@@ -288,11 +334,11 @@ export default {
     };
   },
   methods: {
-    expandChange(row, expandRows) {
-      if (expandRows.length) {
-        this.$refs.table.setScrollLeft(0);
-      }
+    openDrawer(row) {
+      this.currentRow = row;
+      this.drawerVisible = true;
     },
+
     getIndex(index) {
       if (index < 10) {
         return "0" + index;
@@ -496,6 +542,99 @@ export default {
         color: #ffffff;
         bottom: 2px;
         left: 221px;
+      }
+    }
+  }
+}
+.drawer-content {
+  padding: 10px 14px;
+  .drawer-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      font-weight: 700;
+      font-size: 34px;
+      color: #2b3674;
+    }
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .drawer-main {
+    .info-wrap {
+      margin-top: 26px;
+      display: flex;
+      .collector {
+        flex: 3;
+        border-right: 1px dashed #e0e5f2;
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 11px;
+          width: 56px;
+          height: 56px;
+        }
+        .right {
+          .title {
+            font-size: 14px;
+            color: #8f9bba;
+          }
+          .value {
+            font-weight: 700;
+            font-size: 24px;
+            color: #1b2559;
+          }
+        }
+      }
+      .rank {
+        flex: 2;
+        border-right: 1px dashed #e0e5f2;
+        padding-left: 20px;
+        .title {
+          font-size: 14px;
+          color: #8f9bba;
+        }
+        .value {
+          font-weight: 700;
+          font-size: 24px;
+          color: #1b2559;
+        }
+      }
+      .state {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        .tag {
+          width: 74px;
+          height: 48px;
+          line-height: 48px;
+          text-align: center;
+          background: rgba(5, 205, 153, 0.1);
+          border-radius: 7px;
+          font-weight: 700;
+          font-size: 24px;
+          color: #05cd99;
+        }
+      }
+    }
+    .head {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      .icon {
+        width: 4px;
+        height: 16px;
+        background: #7551ff;
+        border-radius: 2px;
+        margin-right: 4px;
+      }
+      span {
+        font-weight: 700;
+        font-size: 24px;
+        color: #2b3674;
       }
     }
   }
