@@ -1,65 +1,9 @@
 <template>
   <div class="table-wrap">
     <el-table :data="tableData">
-      <el-table-column type="expand" fixed width="24">
-        <template #default="props">
-          <!-- <p>State: {{ props.row.state }}</p> -->
-          <div class="expand-content">
-            <div class="chart-wrap">
-              <div class="title">
-                <div class="icon"></div>
-                <span class="text">Rewards (last 10 rounds)</span>
-              </div>
-              <v-chart class="chart" :option="option" />
-            </div>
-            <div class="rank-wrap">
-              <div class="title">
-                <div class="icon"></div>
-                <span class="text">Top 3 Stake percent delegator</span>
-              </div>
-              <div class="rank">
-                <div class="account-wrap">
-                  <div class="account-item">
-                    <div class="img-wrap">
-                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
-                    </div>
-                    <div class="account">0xF97…aceC</div>
-                    <div class="percent">59%</div>
-                  </div>
-                  <div class="account-item">
-                    <div class="img-wrap">
-                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
-                    </div>
-                    <div class="account">0xF97…aceC</div>
-                    <div class="percent">59%</div>
-                  </div>
-                  <div class="account-item">
-                    <div class="img-wrap">
-                      <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
-                    </div>
-                    <div class="account">0xF97…aceC</div>
-                    <div class="percent">59%</div>
-                  </div>
-                </div>
-                <img
-                  class="rank-bg"
-                  src="@/assets/images/moonbeam/rank.png"
-                  alt=""
-                />
-                <span class="absolute1">1</span>
-                <span class="absolute2">2</span>
-                <span class="absolute3">3</span>
-              </div>
-            </div>
-          </div>
-        </template>
-      </el-table-column>
       <el-table-column prop="date" label="Collator" fixed width="200">
         <template #default="scope">
           <div class="table-collector">
-            <span class="text" :class="'color' + (scope.$index + 1)">{{
-              getIndex(scope.$index + 1)
-            }}</span>
             <img src="@/assets/images/moonbeam/moonbeam.png" alt="" />
             <div class="right">
               <div class="top">jetblue-125</div>
@@ -69,27 +13,7 @@
         </template>
       </el-table-column>
       <template v-for="(v, i) in selectColumns" :key="i">
-        <el-table-column
-          v-if="v.name == 'APR'"
-          :prop="v.prop"
-          :label="v.name"
-          :width="v.width"
-        >
-          <template #header>
-            <div class="flex-center">
-              <span class="text">APR</span>
-              <a-tooltip content="This is tooltip content">
-                <img src="@/assets/images/moonbeam/Group_47.png" alt="" />
-              </a-tooltip>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column
-          v-else
-          :prop="v.prop"
-          :label="v.name"
-          :width="v.width"
-        />
+        <el-table-column :prop="v.prop" :label="v.name" :width="v.width" />
       </template>
 
       <el-table-column prop="Action" label="Action" width="90" fixed="right">
@@ -240,18 +164,18 @@ export default {
   },
   data() {
     const draggableList = [
-      { name: "APR", prop: "state", width: "120" },
-      { name: "Min Bond", prop: "state", width: "120" },
+      { name: "Rank", prop: "state", width: "120" },
+      { name: "SelfStake", prop: "state", width: "120" },
+      { name: "Nominator Stake  ", prop: "state", width: "140" },
       { name: "Total Stake", prop: "state", width: "120" },
-      { name: "Avg Blocks", prop: "state", width: "120" },
-      { name: "Total Reward", prop: "state", width: "120" },
-      { name: "Current Blocks", prop: "state", width: "140" },
-      { name: "Self Stake", prop: "state", width: "120" },
-      { name: "Delegator Stake", prop: "state", width: "140" },
-      { name: "RPM", prop: "state", width: "120" },
-      { name: "Min RPM", prop: "state", width: "120" },
-      { name: "Max RPM", prop: "state", width: "120" },
-      { name: "RPM Volatility Score", prop: "state", width: "160" },
+      { name: "MyRank", prop: "state" },
+      // { name: "Current Blocks", prop: "state", width: "140" },
+      // { name: "Self Stake", prop: "state", width: "120" },
+      // { name: "Delegator Stake", prop: "state", width: "140" },
+      // { name: "RPM", prop: "state", width: "120" },
+      // { name: "Min RPM", prop: "state", width: "120" },
+      // { name: "Max RPM", prop: "state", width: "120" },
+      // { name: "RPM Volatility Score", prop: "state", width: "160" },
     ];
     return {
       marks: {
@@ -334,47 +258,6 @@ export default {
       checkboxList: draggableList.map((v) => v.name),
       columns: JSON.parse(JSON.stringify(draggableList)),
       selectColumns: JSON.parse(JSON.stringify(draggableList)),
-      option: {
-        textStyle: {
-          fontFamily: "DM Sans",
-        },
-        xAxis: {
-          type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        grid: {
-          left: 0,
-          top: 5,
-          right: 20,
-          bottom: 0,
-        },
-        yAxis: {
-          type: "value",
-          show: false,
-        },
-        tooltip: {},
-        series: [
-          {
-            itemStyle: {
-              color: "#9374FF",
-              borderRadius: 4,
-            },
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: "bar",
-          },
-          {
-            itemStyle: {
-              color: "#FF844B",
-            },
-            lineStyle: {
-              color: "#FF844B",
-              width: 3,
-            },
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: "line",
-          },
-        ],
-      },
     };
   },
   methods: {
@@ -404,7 +287,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .table-wrap {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .flex-center {
   display: flex;
@@ -432,7 +315,6 @@ export default {
     }
   }
   img {
-    margin-left: 10px;
     margin-right: 8px;
     width: 32px;
     height: 32px;

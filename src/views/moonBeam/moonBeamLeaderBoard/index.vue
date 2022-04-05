@@ -3,12 +3,20 @@
     <div class="big-title">Moonbeam Staking Leaderboard</div>
     <div class="info-wrap">
       <div class="item">
-        <img class="left-icon" src="@/assets/images/moonbeam/total_rewards.png" alt="" />
+        <img
+          class="left-icon"
+          src="@/assets/images/moonbeam/total_rewards.png"
+          alt=""
+        />
         <div class="right">
           <div class="head">
             <span> Total Collators </span>
             <a-tooltip content="This is tooltip content">
-              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Group_47.png"
+                alt=""
+              />
             </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
@@ -20,31 +28,51 @@
           <div class="head">
             <span> Total Staking Amount </span>
             <a-tooltip content="This is tooltip content">
-              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Group_47.png"
+                alt=""
+              />
             </a-tooltip>
           </div>
           <div class="value"><span class="color">300</span>/1800</div>
         </div>
       </div>
       <div class="item">
-        <img class="left-icon" src="@/assets/images/moonbeam/Icon-1.png" alt="" />
+        <img
+          class="left-icon"
+          src="@/assets/images/moonbeam/Icon-1.png"
+          alt=""
+        />
         <div class="right">
           <div class="head">
             <span> Total Blocks </span>
             <a-tooltip content="This is tooltip content">
-              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Group_47.png"
+                alt=""
+              />
             </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
         </div>
       </div>
       <div class="item">
-        <img class="left-icon" src="@/assets/images/moonbeam/Icon-2.png" alt="" />
+        <img
+          class="left-icon"
+          src="@/assets/images/moonbeam/Icon-2.png"
+          alt=""
+        />
         <div class="right">
           <div class="head">
             <span> Total Rewards </span>
             <a-tooltip content="This is tooltip content">
-              <img class="icon" src="@/assets/images/moonbeam/Group_47.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Group_47.png"
+                alt=""
+              />
             </a-tooltip>
           </div>
           <div class="value">39,024,467</div>
@@ -87,7 +115,11 @@
           >
             <div class="r-left">
               <div class="num" :class="'num' + (i + 1)">{{ i + 1 }}st</div>
-              <img class="icon" src="@/assets/images/moonbeam/Icon.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Icon.png"
+                alt=""
+              />
               <div class="middle">
                 <div class="mt">artnft-13</div>
                 <div class="mb">Safe</div>
@@ -106,7 +138,11 @@
           >
             <div class="r-left">
               <div class="num" :class="'num' + (i + 1)">{{ i + 1 }}st</div>
-              <img class="icon" src="@/assets/images/moonbeam/Icon.png" alt="" />
+              <img
+                class="icon"
+                src="@/assets/images/moonbeam/Icon.png"
+                alt=""
+              />
               <div class="middle">
                 <div class="mt">artnft-13</div>
                 <div class="mb">Safe</div>
@@ -245,11 +281,9 @@ export default {
         margin-right: 20px;
         &.right {
           .first {
-            background: linear-gradient(
-              91.25deg,
-              #0495fe -5.01%,
-              #365ff3 103.03%
-            ) !important;
+            background-image: url(~@/assets/images/moonbeam/Group_90.png)!important;
+            background-repeat: no-repeat!important;
+            background-size: 100% 100%!important;
           }
         }
         &:last-child {
@@ -270,7 +304,9 @@ export default {
           &.first {
             margin-bottom: 26px;
             margin-top: 16px;
-            background: linear-gradient(135deg, #868cff 0%, #4318ff 100%);
+            background-image: url(~@/assets/images/moonbeam/Group_89.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             border-radius: 10px;
             padding: 12px 22px;
             .r-left {

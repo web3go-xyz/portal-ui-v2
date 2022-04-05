@@ -6,7 +6,11 @@
         <img class="text" src="@/assets/images/moonbeam/Group-1.png" alt="" />
       </div>
       <div class="menu-wrap">
-        <div v-for="(v, i) in menu" :key="i" class="menu-item">
+        <div
+          v-for="(v, i) in menu"
+          :key="i"
+          class="menu-item"
+        >
           <div class="menu-title">
             <img class="icon" :src="v.icon" alt="" />
             <span> Moonbeam </span>
@@ -71,6 +75,7 @@ export default {
 .container {
   height: 100%;
   .container-side {
+    z-index: 4;
     position: fixed;
     width: 290px;
     top: 0;
@@ -88,6 +93,8 @@ export default {
       }
     }
     .menu-wrap {
+      height: calc(100% - 265px);
+      overflow: auto;
       .menu-item {
         .menu-title {
           margin-top: 23px;
@@ -114,7 +121,6 @@ export default {
           /* identical to box height, or 244% */
 
           /* Secondary/Grey/600 */
-
           color: #a3aed0;
           &:hover {
             cursor: pointer;
@@ -154,6 +160,7 @@ export default {
   }
   .container-main {
     height: 100%;
+    min-width: 1200px;
     background: #f4f7fe;
     margin-left: 290px;
   }

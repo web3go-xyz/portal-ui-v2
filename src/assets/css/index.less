@@ -46,7 +46,7 @@ ul {
     margin: 0;
 }
 
-body {
+#body {
 
     // el-table样式修改
     .el-table {
@@ -75,8 +75,6 @@ body {
     }
 
     .el-table__header-wrapper tr {
-        // height: 50px;
-        // line-height: 50px;
         border-radius: 10px;
     }
 
@@ -155,7 +153,7 @@ body {
     }
 
     .el-table__expanded-cell {
-        padding: 0!important;
+        padding: 0 !important;
     }
 
 
@@ -202,5 +200,58 @@ body {
 
     .arco-checkbox:hover .arco-checkbox-icon-hover::before {
         background: transparent;
+    }
+
+    // tab
+    .arco-tabs-tab:first-child {
+        margin-left: 0;
+    }
+
+    .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
+        background: transparent;
+    }
+
+    .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title {
+        color: #4318FF !important;
+    }
+
+    .arco-tabs-nav::before {
+        display: none;
+    }
+
+    .arco-tabs-tab-title {
+        transition: all .2s;
+        font-weight: 700;
+        font-size: 24px;
+        color: #A3AED0;
+    }
+
+    .arco-tabs-tab-active,
+    .arco-tabs-tab-active:hover {
+        .arco-tabs-tab-title {
+            color: #4318FF;
+        }
+    }
+
+    // input
+    .arco-input-wrapper {
+        background: #f4f7fe;
+        border-radius: 10px;
+    }
+
+    // select
+    .arco-select {
+        background: #f4f7fe;
+        border-radius: 10px;
+        padding: 4px 20px;
+
+        .arco-select-view-input {
+            font-size: 16px;
+        }
+
+        .arco-select-view-value {
+            font-size: 16px;
+            color: #11047a;
+        }
     }
 }
