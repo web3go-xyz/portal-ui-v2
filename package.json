@@ -9,9 +9,14 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "@polkadot/vue-identicon": "^1.4.1",
+        "axios": "^0.26.1",
+        "bignumber.js": "^9.0.2",
         "core-js": "^3.6.5",
+        "dom-to-image": "^2.6.0",
         "echarts": "^5.3.2",
         "element-plus": "^2.1.7",
+        "ethereum-blockies-base64": "^1.0.2",
         "vue": "^3.0.0",
         "vue-echarts": "^6.0.2",
         "vue-router": "^4.0.0-0",
@@ -19,6 +24,7 @@
         "vuex": "^4.0.0-0"
     },
     "devDependencies": {
+        "@open-wc/webpack-import-meta-loader": "^0.4.7",
         "@arco-design/web-vue": "^2.21.2",
         "@vue/cli-plugin-babel": "~4.5.15",
         "@vue/cli-plugin-eslint": "~4.5.15",
