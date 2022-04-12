@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrap">
-    <el-table :data="tableData">
+    <el-table :data="tableData" ref="table">
       <el-table-column type="expand" fixed width="24">
         <template #default="props">
           <!-- <p>State: {{ props.row.state }}</p> -->
@@ -135,7 +135,7 @@
                     </a-checkbox-group>
                   </div>
                   <div class="btn-wrap">
-                    <a-button type="outline" @click="comfirmSort"
+                    <a-button type="outline" @click="comfirmSort()"
                       >Confirm</a-button
                     >
                   </div>
@@ -395,8 +395,30 @@ export default {
     comfirmSort() {
       this.popoverShow = false;
       this.columns = JSON.parse(JSON.stringify(this.draggableList));
-      this.selectColumns = this.columns.filter((v) => {
-        return this.checkboxList.find((sv) => sv == v.name);
+      this.selectColumns = JSON.parse(JSON.stringify(this.columns)).filter(
+        (v) => {
+          return this.checkboxList.find((sv) => sv == v.name);
+        }
+      );
+      // 若宽度不够，防止表格变窄
+      this.$nextTick(() => {
+        const table = this.$refs.table;
+        if (this.selectColumns.find((v) => !v.width)) {
+          return;
+        }
+        let totalWidth = 0;
+        this.selectColumns.forEach((v) => {
+          totalWidth += Number(v.width);
+        });
+        if (
+          totalWidth +
+            table.layout.fixedWidth.value +
+            table.layout.rightFixedWidth.value <
+          table.layout.bodyWidth.value
+        ) {
+          // // 最后一列宽度放开
+          this.selectColumns[this.selectColumns.length - 1].width = undefined;
+        }
       });
     },
   },

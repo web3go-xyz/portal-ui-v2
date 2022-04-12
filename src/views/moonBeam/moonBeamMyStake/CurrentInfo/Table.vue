@@ -281,6 +281,26 @@ export default {
       this.selectColumns = this.columns.filter((v) => {
         return this.checkboxList.find((sv) => sv == v.name);
       });
+      // 若宽度不够，防止表格变窄
+      this.$nextTick(() => {
+        const table = this.$refs.table;
+        if (this.selectColumns.find((v) => !v.width)) {
+          return;
+        }
+        let totalWidth = 0;
+        this.selectColumns.forEach((v) => {
+          totalWidth += Number(v.width);
+        });
+        if (
+          totalWidth +
+            table.layout.fixedWidth.value +
+            table.layout.rightFixedWidth.value <
+          table.layout.bodyWidth.value
+        ) {
+          // // 最后一列宽度放开
+          this.selectColumns[this.selectColumns.length - 1].width = undefined;
+        }
+      });
     },
   },
 };
